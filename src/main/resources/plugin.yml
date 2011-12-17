@@ -1,0 +1,12 @@
+author: croxis
+database: false
+description: Simple plugin that utilizes the Research plugin.
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: me.croxis.plugins.tech.Tech
+name: Tech
+startup: postworld
+version: '1'
+commands:
+  tech:
+    description: technology tree
+depend: [Research]
