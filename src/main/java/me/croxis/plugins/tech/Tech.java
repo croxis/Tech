@@ -42,8 +42,12 @@ public class Tech extends JavaPlugin {
         	public void run(){
             	for(World w : getServer().getWorlds()){
             		for(Player p : w.getPlayers()){
-            			if(p.hasPermission("tech"))
-            				TechManager.addPoints(p, points);
+
+						if(p.hasPermission("tech")){
+            				boolean learned = TechManager.addPoints(p, points);
+            				if(learned)
+            					p.sendMessage("You have learned a technology!");
+						}
             		}
             	}
             }
