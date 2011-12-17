@@ -135,7 +135,7 @@ public class Tech extends JavaPlugin {
     			return false;
     		}
     		TechManager.startResearch(player, name);
-    		float time = (float) (tech.cost - TechManager.getPoints(player)) / (float) seconds;
+    		float time = (float) (tech.cost - TechManager.getPoints(player)) * (1/(float) seconds) * 60;
     		player.sendMessage("Time to completion: " + Float.toString(time) + " minutes.");
     		return true;    		
     	} else if(args[0].equalsIgnoreCase("progress")){
@@ -144,7 +144,7 @@ public class Tech extends JavaPlugin {
     			player.sendMessage("You are not researching anything right now.");
     			return true;
     		}
-    		float time = (float) (tech.cost - TechManager.getPoints(player)) / (float) seconds;
+    		float time = (float) (tech.cost - TechManager.getPoints(player)) * (1/(float) seconds) * 60;
     		player.sendMessage("Current Progress: " + Integer.toString(TechManager.getPoints(player)) + "/" + Integer.toString(tech.cost));
     		player.sendMessage("Time to completion: " + Float.toString(time) + " minutes.");
     		return true;    		
