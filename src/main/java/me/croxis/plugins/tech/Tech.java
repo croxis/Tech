@@ -81,7 +81,7 @@ public class Tech extends JavaPlugin {
     		player.sendMessage(stringTechList(techs));
     		return true;
     	} else if(args[0].equalsIgnoreCase("available")){
-    		ArrayList<net.croxis.plugins.research.Tech> techs = TechManager.getResearched(player);
+    		ArrayList<net.croxis.plugins.research.Tech> techs = TechManager.getAvailableTech(player);
     		player.sendMessage("You can research the following " + Integer.toString(techs.size()) + " techs.");
     		player.sendMessage(stringTechList(techs));
     		return true;
@@ -131,12 +131,16 @@ public class Tech extends JavaPlugin {
     			return false;
     		}
     		TechManager.startResearch(player, name);
-    		float time = (float) (tech.cost - TechManager.getPoints(player)) / (float) seconds / (float) 60;
+    		float time = (float) (tech.cost - TechManager.getPoints(player)) / (float) seconds;
     		player.sendMessage("Time to completion: " + Float.toString(time) + " minutes.");
     		return true;    		
     	} else if(args[0].equalsIgnoreCase("progress")){
     		net.croxis.plugins.research.Tech tech = TechManager.getCurrentResearch(player);
-    		float time = (float) (tech.cost - TechManager.getPoints(player)) / (float) seconds / (float) 60;
+    		if(tech == null){
+    			player.sendMessage("You are not researching anything right now.");
+    			return true;
+    		}
+    		float time = (float) (tech.cost - TechManager.getPoints(player)) / (float) seconds;
     		player.sendMessage("Current Progress: " + Integer.toString(TechManager.getPoints(player)) + "/" + Integer.toString(tech.cost));
     		player.sendMessage("Time to completion: " + Float.toString(time) + " minutes.");
     		return true;    		
