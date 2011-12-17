@@ -73,21 +73,19 @@ public class Tech extends JavaPlugin {
     	
     	Player player = (Player) sender;
     	
-    	if(args[1].equalsIgnoreCase("list")){
+    	if(args.length == 0){
+    		//Empty for null commands
+    	} else if(args[0].equalsIgnoreCase("list")){
     		ArrayList<net.croxis.plugins.research.Tech> techs = TechManager.getResearched(player);
     		player.sendMessage("You know " + Integer.toString(techs.size()) + " of " + Integer.toString(TechManager.techs.size()) + " techs.");
     		player.sendMessage(stringTechList(techs));
     		return true;
-    	}
-    	
-    	if(args[1].equalsIgnoreCase("available")){
+    	} else if(args[0].equalsIgnoreCase("available")){
     		ArrayList<net.croxis.plugins.research.Tech> techs = TechManager.getResearched(player);
     		player.sendMessage("You can research the following " + Integer.toString(techs.size()) + " techs.");
     		player.sendMessage(stringTechList(techs));
     		return true;
-    	}
-    	
-    	if(args[1].equalsIgnoreCase("info") && args.length > 1){
+    	} else if(args[0].equalsIgnoreCase("info") && args.length > 1){
     		String name = "";
     		for(String s : args){
     			if(!s.equalsIgnoreCase("info"))
@@ -112,9 +110,7 @@ public class Tech extends JavaPlugin {
     		player.sendMessage("Requires: " + parents.replaceAll("\\s+$", ""));
     		player.sendMessage("Enables: " + children.replaceAll("\\s+$", ""));
     		return true;    		
-    	}
-    	
-    	if(args[1].equalsIgnoreCase("set") && args.length > 1){
+    	} else if(args[0].equalsIgnoreCase("set") && args.length > 1){
     		String name = "";
     		for(String s : args){
     			if(!s.equalsIgnoreCase("set"))
@@ -138,9 +134,7 @@ public class Tech extends JavaPlugin {
     		float time = (float) (tech.cost - TechManager.getPoints(player)) / (float) seconds / (float) 60;
     		player.sendMessage("Time to completion: " + Float.toString(time) + " minutes.");
     		return true;    		
-    	}
-    	
-    	if(args[1].equalsIgnoreCase("progress")){
+    	} else if(args[0].equalsIgnoreCase("progress")){
     		net.croxis.plugins.research.Tech tech = TechManager.getCurrentResearch(player);
     		float time = (float) (tech.cost - TechManager.getPoints(player)) / (float) seconds / (float) 60;
     		player.sendMessage("Current Progress: " + Integer.toString(TechManager.getPoints(player)) + "/" + Integer.toString(tech.cost));
