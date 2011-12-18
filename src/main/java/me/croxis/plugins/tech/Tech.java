@@ -11,6 +11,8 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event.Priority;
+import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Tech extends JavaPlugin {
@@ -38,6 +40,7 @@ public class Tech extends JavaPlugin {
     	seconds = this.getConfig().getInt("seconds");
     	this.getConfig().options().copyDefaults(true);
         saveConfig();
+        this.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, new TBlockListener(), Priority.Normal, this);
         taskid = getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable(){
         	public void run(){
             	for(World w : getServer().getWorlds()){
