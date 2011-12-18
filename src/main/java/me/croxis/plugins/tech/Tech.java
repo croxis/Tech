@@ -79,6 +79,10 @@ public class Tech extends JavaPlugin {
     	}
     	
     	Player player = (Player) sender;
+    	if(!player.hasPermission("tech")){
+    		player.sendMessage("You do not have permission!");
+    		return false;
+    	}
     	
     	if(args.length == 0){
     		//Empty for null commands
@@ -101,7 +105,7 @@ public class Tech extends JavaPlugin {
     		name = name.replaceAll("\\s+$", "");
     		net.croxis.plugins.research.Tech tech = TechManager.techs.get(name);
     		if(tech == null){
-    			player.sendMessage("There is no tech by that name.");
+    			player.sendMessage("There is no tech by the name " + name);
     			return false;
     		}
     		player.sendMessage("Name: " + tech.name + " | Costs: " + Integer.toString(tech.cost));
@@ -148,7 +152,7 @@ public class Tech extends JavaPlugin {
     			return true;
     		}
     		float time = (float) (tech.cost - TechManager.getPoints(player)) * (1/(float) seconds) * 60;
-    		player.sendMessage("Current Progress: " + Integer.toString(TechManager.getPoints(player)) + "/" + Integer.toString(tech.cost));
+    		player.sendMessage("Current Progress for " + tech.name + ": " + Integer.toString(TechManager.getPoints(player)) + "/" + Integer.toString(tech.cost));
     		player.sendMessage("Time to completion: " + Float.toString(time) + " minutes.");
     		return true;    		
     	}
