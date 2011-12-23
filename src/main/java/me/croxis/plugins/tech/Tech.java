@@ -21,7 +21,7 @@ public class Tech extends JavaPlugin {
 	int seconds = 60;
 	int taskid = -1;
 	
-	public void logInfo(String message){
+	public void logDebug(String message){
     	logger.log(Level.INFO, "[Tech] " + message);
     }
     
@@ -100,9 +100,9 @@ public class Tech extends JavaPlugin {
     		String name = "";
     		for(String s : args){
     			if(!s.equalsIgnoreCase("info"))
-    				name += s;
+    				name += s + " ";
     		}
-    		name = name.replaceAll("\\s+$", "");
+    		name = name.trim();
     		net.croxis.plugins.research.Tech tech = TechManager.techs.get(name);
     		if(tech == null){
     			player.sendMessage("There is no tech by the name " + name);
@@ -125,9 +125,9 @@ public class Tech extends JavaPlugin {
     		String name = "";
     		for(String s : args){
     			if(!s.equalsIgnoreCase("set"))
-    				name += s;
+    				name += s + " ";
     		}
-    		name = name.replaceAll("\\s+$", "");
+    		name = name.trim();
     		net.croxis.plugins.research.Tech tech = TechManager.techs.get(name);
     		if(tech == null){
     			player.sendMessage("There is no tech by that name.");
