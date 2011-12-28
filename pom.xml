@@ -38,7 +38,7 @@
         <dependency>
             <groupId>net.croxis.plugins.research</groupId>
             <artifactId>Research</artifactId>
-            <version>1-SNAPSHOT</version>
+            <version>1</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
