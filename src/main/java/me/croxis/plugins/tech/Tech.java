@@ -1,6 +1,7 @@
 package me.croxis.plugins.tech;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,7 +62,7 @@ public class Tech extends JavaPlugin {
     
     
     
-    public String stringTechList(ArrayList<net.croxis.plugins.research.Tech> techs){
+    public String stringTechList(HashSet<net.croxis.plugins.research.Tech> techs){
     	String techNames = "";
 		Iterator<net.croxis.plugins.research.Tech> it = techs.iterator();
 		while(it.hasNext()){
@@ -87,12 +88,12 @@ public class Tech extends JavaPlugin {
     	if(args.length == 0){
     		//Empty for null commands
     	} else if(args[0].equalsIgnoreCase("list")){
-    		ArrayList<net.croxis.plugins.research.Tech> techs = TechManager.getResearched(player);
+    		HashSet<net.croxis.plugins.research.Tech> techs = TechManager.getResearched(player);
     		player.sendMessage("You know " + Integer.toString(techs.size()) + " of " + Integer.toString(TechManager.techs.size()) + " techs.");
     		player.sendMessage(stringTechList(techs));
     		return true;
     	} else if(args[0].equalsIgnoreCase("available")){
-    		ArrayList<net.croxis.plugins.research.Tech> techs = TechManager.getAvailableTech(player);
+    		HashSet<net.croxis.plugins.research.Tech> techs = TechManager.getAvailableTech(player);
     		player.sendMessage("You can research the following " + Integer.toString(techs.size()) + " techs.");
     		player.sendMessage(stringTechList(techs));
     		return true;
