@@ -13,6 +13,10 @@
             <id>croxis-repo</id>
             <url>http://croxis.net:8080/plugin/repository</url>
         </repository>
+        <repository>
+            <id>spout-repo</id>
+            <url>http://repo.getspout.org/</url>
+        </repository>
     </repositories>
     <build>
         <plugins>
