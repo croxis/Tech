@@ -48,8 +48,8 @@ public class Tech extends JavaPlugin {
             		for(Player p : w.getPlayers()){
 
 						if(p.hasPermission("tech")){
-            				boolean learned = TechManager.addPoints(p, points);
-            				if(learned)
+            				net.croxis.plugins.research.Tech learned = TechManager.addPoints(p, points);
+            				if(learned != null)
             					p.sendMessage("You have learned a technology!");
 						}
             		}
