@@ -41,7 +41,7 @@ public class Tech extends JavaPlugin {
     	seconds = this.getConfig().getInt("seconds");
     	this.getConfig().options().copyDefaults(true);
         saveConfig();
-        this.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, new TBlockListener(), Priority.Normal, this);
+        this.getServer().getPluginManager().registerEvents(new TBlockListener(), this);
         taskid = getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable(){
         	public void run(){
             	for(World w : getServer().getWorlds()){
