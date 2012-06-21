@@ -5,7 +5,7 @@ generator: http://dinnerbone.com/minecraft/tools/pluginator/
 main: me.croxis.plugins.tech.Tech
 name: Tech
 startup: postworld
-version: '2'
+version: '3'
 commands:
   tech:
     description: technology tree
